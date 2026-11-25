@@ -18,9 +18,9 @@ npm run preview
 
 ## GitHub Pages
 
-The workflow at `.github/workflows/deploy.yml` builds the site and deploys `dist/` to GitHub Pages on pushes to `main` and `portfolio-development`.
+The workflow at `.github/workflows/deploy.yml` builds the site on pushes to `main` and `portfolio-development`. It deploys to GitHub Pages when changes reach `main`.
 
-In the repository settings, open **Pages** and set the build and deployment source to **GitHub Actions**.
+Before the first deployment, open repository **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**. The connected GitHub integration cannot enable this repository-level setting automatically. After the setting is selected, merge the portfolio branch into `main` (or rerun the main-branch workflow) to publish.
 
 The Vite base path is configured for this project repository: `/claude-todo-demo/`. If you rename the repository, update `base` in `vite.config.ts`.
 
