@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
-  ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Award, BookOpen,
-  BriefcaseBusiness, Check, ChevronDown, Code2, Download, ExternalLink,
+  ArrowDown, ArrowLeft, ArrowUpRight, Award, BookOpen, Download,
   Github, Linkedin, Mail, Menu, Moon, Sun, X, Zap,
 } from 'lucide-react'
 
@@ -66,7 +65,7 @@ const projects: Project[] = [
 ]
 
 const experience = [
-  { period: '2025 — 2025', role: 'Industrial Trainee', org: 'Nitol Motors', place: 'Narayanganj, Bangladesh', note: 'Industrial exposure within an automotive organization, developing an understanding of practical operations and workplace systems.' },
+  { period: 'JUN 2025 — NOV 2025', role: 'Industrial Trainee', org: 'Nitol Motors', place: 'Narayanganj, Bangladesh', note: 'Industrial exposure within an automotive organization, developing an understanding of practical operations and workplace systems.' },
   { period: '2025 — PRESENT', role: 'Supply Chain Intern', org: 'X-index Company', place: 'Dhaka, Bangladesh', note: 'Supply chain internship experience. Add the specific function, responsibilities and outcomes here.' },
   { period: '2025', role: 'Industrial Trainee', org: 'BITAC', place: 'Bangladesh', note: 'Industrial training experience. Add the training area and practical activities here.' },
   { period: '2025', role: 'Campus Ambassador', org: 'PRAN', place: 'Bangladesh', note: 'Campus representation and student engagement activities.' },
@@ -165,7 +164,7 @@ function App() {
             </motion.p>
             <motion.div className="hero-ctas" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .6 }}>
               <a className="button button-primary" href="#projects">Explore my work <ArrowUpRight size={16} /></a>
-              <a className="button button-quiet" href="/claude-todo-demo/cv.pdf" target="_blank" rel="noreferrer"><Download size={16} /> Download CV</a>
+              <a className="button button-quiet" href="#contact"><Download size={16} /> CV available on request</a>
             </motion.div>
             <motion.div className="hero-socials" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .72 }}>
               <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn placeholder"><Linkedin size={17} /></a>
@@ -206,7 +205,7 @@ function App() {
               <p>With a background in Mechanical & Production Engineering from Ahsanullah University of Science and Technology (AUST), I bring an analytical approach to complex problems. My interests span mechanical systems, supply chain operations, technology and business strategy.</p>
               <p>Beyond the classroom, I’ve explored ideas through research, industrial exposure, student leadership and more than 50 business case competitions. I enjoy connecting technical thinking with people, processes and practical outcomes.</p>
               <div className="about-meta">
-                <div><span>EDUCATION</span><strong>BSc, Mechanical & Production Engineering</strong><small>Ahsanullah University of Science and Technology</small></div>
+                <div><span>EDUCATION</span><strong>BSc, Mechanical & Production Engineering</strong><small>AUST · CGPA 3.30 / 4.00 · 2026</small></div>
                 <div><span>CREDENTIAL</span><strong>Certified Supply Chain Analyst (CSCA)</strong><small>Certification</small></div>
               </div>
             </motion.div>
