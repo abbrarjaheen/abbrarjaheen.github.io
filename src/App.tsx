@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, animate, motion, useInView, useMotionValue, useTransform } from 'framer-motion'
 import {
   ArrowDown, ArrowLeft, ArrowUpRight, Award, BookOpen, Download,
   Github, Linkedin, Mail, Menu, Moon, Sun, X, Zap,
@@ -98,6 +98,26 @@ function SectionLabel({ children, number }: { children: string; number: string }
   return <div className="section-label"><span>{number}</span><span>{children}</span><i /></div>
 }
 
+function AnimatedNumber({ value }: { value: number }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const inView = useInView(ref, { once: true, amount: 0.7 })
+  const count = useMotionValue(0)
+  const rounded = useTransform(count, (latest) => Math.round(latest))
+  const [display, setDisplay] = useState(0)
+
+  useEffect(() => {
+    if (!inView) return
+    const unsubscribe = rounded.on('change', setDisplay)
+    const controls = animate(count, value, { duration: 1.5, ease: 'easeOut' })
+    return () => {
+      unsubscribe()
+      controls.stop()
+    }
+  }, [inView, count, rounded, value])
+
+  return <span ref={ref}>{display}</span>
+}
+
 function App() {
   const [dark, setDark] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -117,6 +137,15 @@ function App() {
   useEffect(() => {
     document.body.style.overflow = activeProject ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
+  }, [activeProject])
+
+  useEffect(() => {
+    if (!activeProject) return
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setActiveProject(null)
+    }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
   }, [activeProject])
 
   const closeMenu = () => setMenuOpen(false)
@@ -211,9 +240,9 @@ function App() {
             </motion.div>
           </div>
           <div className="stat-row">
-            <div className="stat"><strong>50<span>+</span></strong><small>BUSINESS CASE COMPETITIONS</small></div>
-            <div className="stat"><strong>01</strong><small>HULT PRIZE CAMPUS WIN</small></div>
-            <div className="stat"><strong>03<span>+</span></strong><small>AREAS OF EXPLORATION</small></div>
+            <div className="stat"><strong><AnimatedNumber value={50} /><span>+</span></strong><small>BUSINESS CASE COMPETITIONS</small></div>
+            <div className="stat"><strong><AnimatedNumber value={1} /></strong><small>HULT PRIZE CAMPUS WIN</small></div>
+            <div className="stat"><strong><AnimatedNumber value={3} /><span>+</span></strong><small>AREAS OF EXPLORATION</small></div>
             <div className="stat"><strong>∞</strong><small>QUESTIONS TO ASK</small></div>
           </div>
         </section>
