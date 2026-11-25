@@ -5,6 +5,7 @@
 :root { font-family: 'DM Sans', sans-serif; color-scheme: dark; --bg: #111315; --surface: #171a1d; --surface-2: #1d2125; --text: #eeeee9; --muted: #9a9e9f; --faint: #656b6d; --line: rgba(238,238,233,.12); --accent: #80aaff; --accent-2: #b7cdf8; --serif: 'Manrope', sans-serif; --mono: 'DM Mono', monospace; }
 :root[data-theme='light'] { color-scheme: light; --bg: #f3f2ed; --surface: #eae9e2; --surface-2: #e2e1da; --text: #202326; --muted: #60666a; --faint: #8a8e8f; --line: rgba(32,35,38,.14); --accent: #315fba; --accent-2: #244e9e; }
 * { box-sizing: border-box; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 body { margin: 0; background: var(--bg); color: var(--text); transition: background .25s, color .25s; }
 a { color: inherit; text-decoration: none; }
