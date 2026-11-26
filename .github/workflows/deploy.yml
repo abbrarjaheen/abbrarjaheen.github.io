@@ -2,7 +2,7 @@ name: Deploy portfolio to GitHub Pages
 
 on:
   push:
-    branches: [main, portfolio-development]
+    branches: [main, portfolio-development, portfolio-deployment]
   workflow_dispatch:
 
 permissions:
@@ -34,7 +34,7 @@ jobs:
           path: dist
 
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/portfolio-deployment'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
